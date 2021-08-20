@@ -40,3 +40,13 @@ app.get("/getObjects", function (request, response) {
             response.json({data: JSON.stringify(data)});
         });
 });
+
+// set port, listen for requests
+const PORT = process.env.PORT || 3100;
+// Start the server
+const server = app.listen(PORT, (error) => {
+    if (error) return console.log(`Error: ${error}`);
+
+    console.log(`Server listening on port ${server.address().port}`);
+});
+server.setTimeout(10000);
