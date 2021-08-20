@@ -5,13 +5,18 @@ const mysql = require("mysql2");
 const app = express();
 const axios = require('axios');
 const router = express.Router();
-const settings = require('./settings');
 
 var corsOptions = {
     origin: "*"
 };
 
-const connection = mysql.createConnection(settings);
+const connection = mysql.createConnection({
+    host: "server206.hosting.reg.ru",
+    user: "u0483195_guest",
+    database: "u0483195_legend",
+    password: "123456asd",
+    port: "3306",
+});
 
 connection.connect(function (err) {
     if (err) {
