@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({extended: false})); // Если массив - tr
 app.use(bodyParser.json());
 
 
+
 app.get("/getObjects", function (request, response) {
     connection.query("SELECT * FROM objects",
         function (err, results, fields) {
