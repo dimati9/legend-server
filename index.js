@@ -41,6 +41,18 @@ app.get("/getObjects", function (request, response) {
         });
 });
 
+app.post("/newObject", function (req, res) {
+    const data = req.body;
+    connection.query(`INSERT INTO objects SET name = '${data.name}', coords = '${data.coords}', icon = '${data.icon}', text = '${data.text}'`,
+        function (err, results, fields) {
+            if (err) return res.json({ok: 0, message: err});
+            var data = results;
+            return res.json({ok: 1});
+        });
+});
+
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3100;
 // Start the server
