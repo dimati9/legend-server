@@ -41,6 +41,14 @@ app.get("/getObjects", function (request, response) {
         });
 });
 
+app.get("/getPlaces", function (request, response) {
+    connection.query("SELECT * FROM places",
+        function (err, results, fields) {
+            var data = results;
+            response.json({data: JSON.stringify(data)});
+        });
+});
+
 app.post("/newObject", function (req, res) {
     const data = req.body;
     connection.query(`INSERT INTO objects SET name = '${data.name}', coords = '${data.coords}', icon = '${data.icon}', text = '${data.text}'`,
